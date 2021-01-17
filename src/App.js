@@ -22,9 +22,12 @@ export default function App() {
       contactsDefault
     );
   });
+
+  //+
   const [filter, setFilter] = useState("");
 
   const addContact = (name, number) => {
+    //+
     const contact = {
       id: shortid.generate(),
       name: name,
@@ -37,13 +40,14 @@ export default function App() {
       ? alert(`${name} is already in contacts.`)
       : setContacts((prevState) => [contact, ...prevState]);
   };
-
+  //+
   const deleteContact = (idForDelete) => {
     setContacts((prevState) =>
       prevState.filter((contact) => contact.id !== idForDelete)
     );
   };
 
+  //+
   const changeFilter = (event) => {
     setFilter(event.currentTarget.value);
   };
