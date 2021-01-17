@@ -1,0 +1,17 @@
+.formContact {
+  width: 300px;
+}
+
+.formContactItem {
+  /* border: 0.005px solid rgb(51, 53, 51); */
+  display: flex;
+  justify-content: space-between;
+}
+
+.formContactItem:hover {
+  background-color: rgb(121, 180, 82);
+}
+
+.formContactButton:hover {
+  background-color: red;
+}
