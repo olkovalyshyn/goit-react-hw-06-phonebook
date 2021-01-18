@@ -20,7 +20,7 @@ const reducer = (state = initialState, { type, payload }) => {
   }
 };
 
-const reducer = () => ({});
+// const reducer = () => ({});
 
 const store = createStore(reducer);
 

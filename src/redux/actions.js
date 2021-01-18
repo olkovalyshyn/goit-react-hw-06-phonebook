@@ -1,6 +1,6 @@
 import shortid from "shortid";
 
-export const addContact = (name, number) => ({
+export const addContact = ({ name, number }) => ({
   type: "App/addContact",
   payload: {
     id: shortid.generate(),
