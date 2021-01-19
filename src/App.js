@@ -86,13 +86,13 @@ function App({ addContact }) {
 
 const mapStateToProps = (state) => {
   return {
-    // addContact: state.addContact,
+    addContact: state.payload,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addContact: () => dispatch(actions.addContact("SOS", "12345")),
+    addContact: () => dispatch(actions.addContact()),
   };
 };
 
