@@ -9,6 +9,7 @@ import * as actions from "./redux/actions";
 import shortid from "shortid";
 
 import "./App.css";
+import { number } from "prop-types";
 
 // const contactsDefault = [
 //   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -72,7 +73,9 @@ function App({ addContact }) {
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
+      {/* <ContactForm onAdd={addContact} /> */}
+      <ContactForm />
+
       <h3>Find contacts by name</h3>
       {/* <Filter value={filter} onChange={changeFilter} /> */}
       <h2>Contacts</h2>
@@ -84,19 +87,28 @@ function App({ addContact }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    addContact: state.payload,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     // addContact: state.payload,
+//     nameAdd: state.payload.name,
+//     numberAdd: state.payload.number,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addContact: () => dispatch(actions.addContact()),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addContact: () =>
+//       dispatch(
+//         actions.addContact(
+//           mapStateToProps.payload.name,
+//           mapStateToProps.payload.number
+//         )
+//       ),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
 // CLASSES
 // class OldApp extends Component {

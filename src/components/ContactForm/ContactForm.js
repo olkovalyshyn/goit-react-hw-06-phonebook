@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 
+import * as actions from "../../redux/actions";
 import s from "./ContactForm.module.css";
 
-export default function ContactForm({ onAdd }) {
+function ContactForm({ onAdd }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
@@ -16,6 +18,7 @@ export default function ContactForm({ onAdd }) {
 
       case "number":
         setNumber(event.currentTarget.value);
+
         break;
 
       default:
@@ -25,9 +28,10 @@ export default function ContactForm({ onAdd }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    onAdd(name, number);
+
     setName("");
     setNumber("");
-    onAdd(name, number);
   };
 
   return (
@@ -60,6 +64,21 @@ export default function ContactForm({ onAdd }) {
     </form>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    // nameAdd: state.name,
+    // numberAdd: state.number,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAdd: (name, number) => dispatch(actions.addContact(name, number)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
 
 // class OldContactForm extends Component {
 //   state = {
