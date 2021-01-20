@@ -30,6 +30,10 @@ function ContactForm({ onAdd }) {
     event.preventDefault();
     onAdd(name, number);
 
+    console.log("!!!name", name);
+    console.log("!!!number", number);
+    console.log("!!!onAdd(name, number)", onAdd(name, number));
+
     setName("");
     setNumber("");
   };
