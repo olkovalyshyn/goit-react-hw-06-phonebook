@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const initialState = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -22,6 +23,10 @@ const reducer = (state = initialState, { type, payload }) => {
 
 // const reducer = () => ({});
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  composeWithDevTools()
+  // other store enhancers if any
+);
 
 export default store;
