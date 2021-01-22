@@ -18,12 +18,26 @@ import { number } from "prop-types";
 //   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
 // ];
 
-function App({ addContact }) {
+function App({ addContact, contactAdded }) {
   const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem("savedContacts"));
+    // return JSON.parse(window.localStorage.getItem("savedContacts"));
     // ??
     // contactsDefault
+
+    // return (
+    //   JSON.parse(window.localStorage.getItem("savedContacts")) ?? contactAdded
+    // );
+
+    return contactAdded;
   });
+
+  useEffect(() => {
+    setContacts(contactAdded);
+  }, [contactAdded]);
+
+  contactAdded ?? setContacts(contactAdded);
+  console.log("!!!contacts", contacts);
+  console.log("!!!contactAdded", contactAdded);
 
   //+
   const [filter, setFilter] = useState("");
@@ -78,6 +92,7 @@ function App({ addContact }) {
 
       <h3>Find contacts by name</h3>
       {/* <Filter value={filter} onChange={changeFilter} /> */}
+      <Filter />
       <h2>Contacts</h2>
       <ContactList
         contacts={visibleContacts()}
@@ -95,6 +110,12 @@ function App({ addContact }) {
 //   };
 // };
 
+const mapStateToProps = (state) => {
+  return {
+    contactAdded: state,
+  };
+};
+
 // const mapDispatchToProps = (dispatch) => {
 //   return {
 //     addContact: () =>
@@ -107,8 +128,8 @@ function App({ addContact }) {
 //   };
 // };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-export default App;
+export default connect(mapStateToProps, null)(App);
+// export default App;
 
 // CLASSES
 // class OldApp extends Component {

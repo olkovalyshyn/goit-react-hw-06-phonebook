@@ -1,6 +1,8 @@
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import actionType from "./contact-types";
+
 const initialState = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
   { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
@@ -10,10 +12,10 @@ const initialState = [
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case "App/addContact":
+    case actionType.ADDCONTACT:
       return [payload, ...state];
 
-    case "App/deleteContact":
+    case actionType.DELCONTACT:
       return state.filter(({ id }) => id !== payload);
 
     default:
