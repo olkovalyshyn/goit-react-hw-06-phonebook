@@ -1,8 +1,8 @@
 import shortid from "shortid";
-import actionType from "./contact-types";
+import { ADDCONTACT, DELCONTACT, FINDCONTACT } from "./contact-types";
 
 export const addContact = (name, number) => ({
-  type: actionType.ADDCONTACT,
+  type: ADDCONTACT,
   payload: {
     id: shortid.generate(),
     name: name,
@@ -13,13 +13,13 @@ export const addContact = (name, number) => ({
 console.log("!!!addContact", addContact());
 
 export const deleteContact = (idForDelete) => ({
-  type: actionType.DELETECONTACT,
+  type: DELCONTACT,
   payload: idForDelete,
 });
 
-export const changeFilter = (value) => ({
-  type: actionType.FINDCONTACT,
+export const filterContact = (value) => ({
+  type: FINDCONTACT,
   payload: value,
 });
 
-export default { addContact, deleteContact, changeFilter };
+export default { addContact, deleteContact, filterContact };

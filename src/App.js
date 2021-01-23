@@ -19,28 +19,28 @@ import { number } from "prop-types";
 // ];
 
 function App({ addContact, contactAdded }) {
-  const [contacts, setContacts] = useState(() => {
-    // return JSON.parse(window.localStorage.getItem("savedContacts"));
-    // ??
-    // contactsDefault
+  // const [filter, setFilter] = useState("");
+  // const [contacts, setContacts] = useState(() => {
+  // return JSON.parse(window.localStorage.getItem("savedContacts"));
+  // ??
+  // contactsDefault
 
-    // return (
-    //   JSON.parse(window.localStorage.getItem("savedContacts")) ?? contactAdded
-    // );
+  // return (
+  //   JSON.parse(window.localStorage.getItem("savedContacts")) ?? contactAdded
+  // );
 
-    return contactAdded;
-  });
+  //   return contactAdded;
+  // });
 
-  useEffect(() => {
-    setContacts(contactAdded);
-  }, [contactAdded]);
+  // useEffect(() => {
+  //   setContacts(contactAdded);
+  // }, [contactAdded]);
 
-  contactAdded ?? setContacts(contactAdded);
-  console.log("!!!contacts", contacts);
-  console.log("!!!contactAdded", contactAdded);
+  // contactAdded ?? setContacts(contactAdded);
+  // console.log("!!!contacts", contacts);
+  // console.log("!!!contactAdded", contactAdded);
 
   //+
-  const [filter, setFilter] = useState("");
 
   // const addContact = (name, number) => {
   //   //+
@@ -69,20 +69,22 @@ function App({ addContact, contactAdded }) {
   //   setFilter(event.currentTarget.value);
   // };
 
-  const visibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+  // ***GO TO ContactList
+  // const visibleContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  //   return contacts.filter((contact) =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
+  // ***GO TO ContactList
 
-  useEffect(() => {
-    window.localStorage.setItem("savedContacts", JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   window.localStorage.setItem("savedContacts", JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const contactsFromLocalStorage = localStorage.getItem("savedContacts");
-  const parsedContactsFromLocalStorage = JSON.parse(contactsFromLocalStorage);
+  // const contactsFromLocalStorage = localStorage.getItem("savedContacts");
+  // const parsedContactsFromLocalStorage = JSON.parse(contactsFromLocalStorage);
 
   return (
     <>
@@ -95,8 +97,8 @@ function App({ addContact, contactAdded }) {
       <Filter />
       <h2>Contacts</h2>
       <ContactList
-        contacts={visibleContacts()}
-        // onDeleteContact={deleteContact}
+      // contacts={visibleContacts()}
+      // onDeleteContact={deleteContact}
       />
     </>
   );
@@ -110,11 +112,11 @@ function App({ addContact, contactAdded }) {
 //   };
 // };
 
-const mapStateToProps = (state) => {
-  return {
-    contactAdded: state,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     contactAdded: state.contacts.items,
+//   };
+// };
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
@@ -128,8 +130,8 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-export default connect(mapStateToProps, null)(App);
-// export default App;
+// export default connect(mapStateToProps, null)(App);
+export default App;
 
 // CLASSES
 // class OldApp extends Component {
