@@ -18,7 +18,7 @@ import { number } from "prop-types";
 //   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
 // ];
 
-function App({ addContact, contactAdded }) {
+function App() {
   // const [filter, setFilter] = useState("");
   // const [contacts, setContacts] = useState(() => {
   // return JSON.parse(window.localStorage.getItem("savedContacts"));

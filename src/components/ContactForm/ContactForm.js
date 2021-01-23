@@ -6,9 +6,11 @@ import PropTypes from "prop-types";
 import * as actions from "../../redux/actions";
 import s from "./ContactForm.module.css";
 
-function ContactForm({ onAdd }) {
+function ContactForm({ onAdd, contactsItem }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  console.log("contactsItem", contactsItem);
 
   const handleChange = (event) => {
     switch (event.currentTarget.name) {
@@ -18,22 +20,19 @@ function ContactForm({ onAdd }) {
 
       case "number":
         setNumber(event.currentTarget.value);
-
         break;
 
       default:
         return;
     }
   };
+  console.log("contactsItem.name.toLowerCase()", contactsItem);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAdd(name, number);
-
-    console.log("!!!name", name);
-    console.log("!!!number", number);
-    console.log("!!!onAdd(name, number)", onAdd(name, number));
-
+    contactsItem.find((item) => item.name.toLowerCase() === name.toLowerCase())
+      ? alert(`${name} is already in contacts.`)
+      : onAdd(name, number);
     setName("");
     setNumber("");
   };
@@ -71,8 +70,7 @@ function ContactForm({ onAdd }) {
 
 const mapStateToProps = (state) => {
   return {
-    // nameAdd: state.name,
-    // numberAdd: state.number,
+    contactsItem: state.contacts.item,
   };
 };
 
