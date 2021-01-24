@@ -6,8 +6,8 @@ import { deleteContact } from "../../redux/actions";
 import s from "./ContactList.module.css";
 
 function ContactList({ contacts, onDeleteContact }) {
-  console.log("!!!contacts in ContactsList", contacts);
-  console.log("!!!state.contacts.items", contacts);
+  // console.log("!!!contacts in ContactsList", contacts);
+  // console.log("!!!state.contacts.items", contacts);
 
   return (
     <ul className={s.formContact}>

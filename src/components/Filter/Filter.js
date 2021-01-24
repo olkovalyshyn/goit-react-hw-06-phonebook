@@ -6,8 +6,6 @@ import actions from "../../redux/actions";
 import PropTypes from "prop-types";
 
 function Filter({ value, onChange }) {
-  console.log("!!!state in Filter", value);
-
   return <input type="text" value={value} onChange={onChange}></input>;
 }
 

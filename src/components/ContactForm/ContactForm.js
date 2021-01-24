@@ -10,8 +10,6 @@ function ContactForm({ onAdd, contactsItem }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  console.log("contactsItem", contactsItem);
-
   const handleChange = (event) => {
     switch (event.currentTarget.name) {
       case "name":
@@ -26,7 +24,6 @@ function ContactForm({ onAdd, contactsItem }) {
         return;
     }
   };
-  console.log("contactsItem.name.toLowerCase()", contactsItem);
 
   const handleSubmit = (event) => {
     event.preventDefault();
